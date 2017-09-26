@@ -1,0 +1,451 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't like 10pt? Try 11pt or 12pt
+\documentclass[10pt]{article}
+
+% The automated optical recognition software used to digitize resume
+% information works best with fonts that do not have serifs. This
+% command uses a sans serif font throughout. Uncomment both lines (or at
+% least the second) to restore a Roman font (i.e., a font with serifs).
+%\usepackage{times}
+%\renewcommand{\familydefault}{\sfdefault}
+
+% This is a helpful package that puts math inside length specifications
+\usepackage{calc}
+\usepackage{comment}
+
+% Simpler bibsection for CV sections
+% (thanks to natbib for inspiration)
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em} %1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newenvironment{bibsection}%
+        {\begin{enumerate}{}{%
+%        {\begin{list}{}{%
+       \setlength{\leftmargin}{\bibhang}%
+       \setlength{\itemindent}{-\leftmargin}%
+       \setlength{\itemsep}{\bibsep}%
+       \setlength{\parsep}{\z@}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{enumerate}\vspace{-.6\baselineskip}}
+%        {\end{list}\vspace{-.6\baselineskip}}
+\makeatother
+
+% Layout: Puts the section titles on left side of page
+\reversemarginpar
+
+%
+%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
+%
+% The next \usepackage line changes the layout for CV style section
+% headings as marginal notes. It also sets up the paper size as either
+% letter or A4. By default, letter was used. If A4 paper is desired,
+% comment out the letterpaper lines and uncomment the a4paper lines.
+%
+% As you can see, the margin widths and section title widths can be
+% easily adjusted.
+%
+% ALSO: Notice that the includefoot option can be commented OUT in order
+% to put the PAGE NUMBER *IN* the bottom margin. This will make the
+% effective text area larger.
+%
+% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
+% see the note about the +LP and -LP lines below. Comment out the +LP
+% and uncomment the -LP.
+%
+% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
+% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
+% below.
+%
+
+% Use these lines for A4-sized paper
+\usepackage[paper=a4paper,
+            %includefoot, % Uncomment to put page number above margin
+            marginparwidth=30mm,    % Length of section titles
+            marginparsep=1.5mm,       % Space between titles and text
+            margin=15mm,              % 25mm margins
+            includemp]{geometry}
+
+%% More layout: Get rid of indenting throughout entire document
+\setlength{\parindent}{0in}
+
+\usepackage[shortlabels]{enumitem}
+
+%% Reference the last page in the page number
+%
+% NOTE: comment the +LP line and uncomment the -LP line to have page
+%       numbers without the ``of ##'' last page reference)
+%
+% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
+%       numbers (make sure includefoot is commented out above)
+%
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+%\pagestyle{empty}      % Uncomment this to get rid of page numbers
+\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfootoffset{\marginparsep+\marginparwidth}
+\newlength{\footpageshift}
+\setlength{\footpageshift}
+          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
+\lfoot{\hspace{\footpageshift}%
+       \parbox{4in}{\, \hfill %
+                    \arabic{page} of \protect\pageref*{LastPage} % +LP
+%                    \arabic{page}                               % -LP
+                    \hfill \,}}
+
+% Finally, give us PDF bookmarks
+\usepackage{color,hyperref}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+            linkcolor=darkblue,urlcolor=darkblue,
+            anchorcolor=darkblue,citecolor=darkblue}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The title (name) with a horizontal rule under it
+% (optional argument typesets an object right-justified across from name
+%  as well)
+%
+% Usage: \makeheading{name}
+%        OR
+%        \makeheading[right_object]{name}
+%
+% Place at top of document. It should be the first thing.
+% If ``right_object'' is provided in the square-braced optional
+% argument, it will be right justified on the same line as ``name'' at
+% the top of the CV. For example:
+%
+%       \makeheading[\emph{Curriculum vitae}]{Your Name}
+%
+% will put an emphasized ``Curriculum vitae'' at the top of the document
+% as a title. Likewise, a picture could be included:
+%
+%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
+%
+% the picture will be flush right across from the name.
+\newcommand{\makeheading}[2][]%
+        {\hspace*{-\marginparsep minus \marginparwidth}%
+         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
+             {\LARGE \bfseries #2 \hfill #1}\\[-0.5\baselineskip]%
+                 \rule{\columnwidth}{1pt}%
+         \end{minipage}}
+
+% The section headings
+%
+% Usage: \section{section name}
+\renewcommand{\section}[1]{\pagebreak[3]%
+    \hyphenpenalty=10000%
+    \vspace{1.3\baselineskip}%
+    \phantomsection\addcontentsline{toc}{section}{#1}%
+    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\raggedright #1}}}%
+    \vspace{-\baselineskip}\par}
+
+% An itemize-style list with lots of space between items
+\newenvironment{outerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*]}{\end{itemize}%
+         \vspace{-.6\baselineskip}}
+
+% An environment IDENTICAL to outerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{lonelist}[1][\enskip\textbullet]%
+        {\begin{list}{#1}{%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\topsep}{0pt}}}
+        {\end{list}\vspace{-.6\baselineskip}}
+
+% An itemize-style list with little space between items
+\newenvironment{innerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}}
+
+% An environment IDENTICAL to innerlist that has better pre-list spacing
+% when used as the first thing in a \section
+\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
+        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
+        {\end{itemize}\vspace{-.6\baselineskip}}
+
+% To add some paragraph space between lines.
+% This also tells LaTeX to preferably break a page on one of these gaps
+% if there is a needed pagebreak nearby.
+\newcommand{\blankline}{\quad\pagebreak[3]}
+\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
+
+% Uses hyperref to link DOI
+\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
+\newcommand\doi[1]{doi:\doilink{#1}}
+
+% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
+\providecommand*\url[1]{\href{#1}{#1}}
+% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
+\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
+
+% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
+\providecommand*\email[1]{\href{mailto:#1}{#1}}
+% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
+%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
+
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+%    \TeX}}
+\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    \TeX}}
+\providecommand\Matlab{\textsc{Matlab}}
+
+%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\makeheading{Achyudh Ram}
+
+\section{Contact Information}
+
+% NOTE: Mind where the & separators and \\ breaks are in the following
+%       table.
+%
+% ALSO: \rcollength is the width of the right column of the table
+%       (adjust it to your liking; default is 1.85in).
+%
+\newlength{\rcollength}\setlength{\rcollength}{1.4in}%
+%
+\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
+Personal website: \href{http://www.achyudh.xyz}{www.achyudh.xyz} & +91-861-042-2481\\
+\href{https://github.com/achyudhk}{github.com/achyudhk}; \href{https://linkedin.com/in/achyudhk}{linkedin.com/in/achyudhk}    & \email{achyudhk@gmail.com} \\
+\end{tabular}
+
+%\section{Objective}
+
+%Insert text here if you want to
+%\begin{innerlist}
+%\item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
+%\end{innerlist}
+
+\section{Research Interests}
+
+Software Analytics, Information Retrieval\\
+Machine Learning, Artificial Neural Networks
+
+\section{Education}
+
+\href{http://www.bits-pilani.ac.in}{\textbf{Birla Institute of Technology \& Science}},
+Pilani
+\begin{outerlist}
+\item[] \textbf{B.E. (Hons.), Computer Science}, \emph{Expected:} August 2018
+        \begin{innerlist}
+        \item \emph{GPA: 9.65/10.0 and Major GPA: 9.73/10.0}
+        \item Top 1\% of the university's students by GPA
+        \item Thesis: \emph{Assessing the reviewability and automating the evaluation of GitHub Pull Requests}
+        \item Advisor: \href{https://sback.it/}{Prof. Alberto Bacchelli}, TU Delft
+        \end{innerlist}
+        
+\item[] \textbf{M.Sc. (Hons.), Economics}, \emph{Expected:} August 2018
+        \begin{innerlist}
+        \item \emph{Major GPA: 10.0/10.0}
+        \end{innerlist}
+\end{outerlist}
+
+\section{Teaching Experience}
+
+\textbf{Teaching Assistant} - Neural Networks \& Fuzzy Logic \hfill {Jan 2017 -- May 2017}
+\begin{innerlist}
+\item[] BITS F312 with \href{http://www.bits-pilani.ac.in/goa/tirtharaj/profile}{Tirtharaj Dash}, Department of Computer Science,\\
+        Birla Institute of Technology \& Science, Pilani
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Teaching Assistant} - Data Structures \& Algorithms \hfill {Jan 2017 -- May 2017}
+\begin{innerlist}
+\item[] CS F211 with \href{http://www.bits-pilani.ac.in/goa/abaskar/Profile}{Dr. A. Baskar}, Department of Computer Science,\\
+        Birla Institute of Technology \& Science, Pilani
+\end{innerlist}
+
+\section{Work Experience}
+\textbf{Student Researcher, \href{http://swerl.tudelft.nl/bin/view/Main/WebHome}{SERG, TU Delft}} \hfill {Aug 2017 -- Dec 2017}
+\begin{innerlist}
+    \item Worked on my senior thesis with the Software Engineering Research Group (SERG) on emperical software engineering
+    \item Participated in courses on software analytics and software engineering methods
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Software Developer Intern, Intuit Inc.} \hfill {May 2017 -- Jul 2017}
+\begin{innerlist}
+    \item Developed a data engine and a dynamic reports engine directly on top of the database
+    \item Built an insights engine to provide forecasts and a variety of insights based on the data engine
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Economic Research \& Planning Intern, Indian Bank HQ} \hfill {May 2015 -- Jul 2015}
+\begin{innerlist}
+    \item Developed environment sensitive time-series forecasting models for setting business targets
+\end{innerlist}
+
+\section{Research Projects}
+
+\textbf{Analysis framework for decoding online developer communities} \hfill {Dec 2015 -- 
+May 2017}
+Advisor: \href{https://prasadtalasila.wordpress.com/}{Prasad Talasila} \hfill Code: \href{https://github.com/achyudhk/Mailing-List-Network-Analyzer}{github.com/achyudhk/Mailing-List-Network-Analyzer}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Analyzed author interaction through community detection in mailing lists and IRC channels
+\item Developed a text mining approach to identify topic experts and label communities 
+\item Utilized visual aids to examine the activity and decode the structure of the developer communities
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Fitness-aware brokering of hosted containerized environments} \hfill {Jan 2017 -- May 2017}
+Advisor: \href{https://scholar.google.co.in/citations?user=8UNP6BIAAAAJ}{Dr. Santonu Sarkar} \hfill GitHub link: \href{https://github.com/achyudhk/Fitness-Aware-Container-Brokering}{achyudhk/Fitness-Aware-Container-Brokering}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Implemented an integration agent that benchmarks and containerizes a SaaS catalogue offering and places it under the best-fit container
+\item Developed a smart fulfillment engine that deploys a catalogued IT service into a best-fit container out of a set of available containers hosted on various underlying clouds
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Novel feature selection using Fuzzy C-Means clustering} \hfill {Feb 2017 -- Apr 2017}\\
+Advisor: \href{http://www.bits-pilani.ac.in/goa/rkroul/Profile}{Dr. Rajendra Roul} \hfill GitHub link: \href{https://github.com/achyudhk/FCM-Feature-Selection}{achyudhk/FCM-Feature-Selection}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Features were selected using cosine similarity scores on the semantic centroids calculated from the normalized term-term correlation based on clustering
+\item Selected features result in comparable F-scores for classification compared to MI and Chi\textsuperscript{2}
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Semantic segmentation using a deconvolution network} \hfill {Mar 2017 -- Apr 2017}\\
+Neural Networks Course Project \hfill Reference: \href{https://arxiv.org/abs/1505.04366}{arXiv:1505.04366}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Trained a deconvolution network to identify Red Blood Cells in an input image by predicting a binary segmentation mask
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Video translation of American Sign Language gestures} \hfill {Nov 2016 -- Dec 2016}\\
+Machine Learning Course Project \hfill GitHub link: \href{https://github.com/achyudhk/Sign-Language-Recognition}{achyudhk/Sign-Language-Recognition}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Utilized hard negative mining, non-maximal suppression for localization and extracted histogram of gradients and local binary patterns as features
+\item Achieved an accuracy of $\sim$99\% on localization and 96.8\% on top-5 classification (IoU metric)
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Identifying the trends in Indian Legistative issues using NLP} \hfill {Aug 2016 -- Dec 2016}
+Advisor: \href{http://universe.bits-pilani.ac.in/goa/anoopk/Profile}{Dr. Anoop Kumar} \hfill GitHub link: \href{https://github.com/achyudhk/Parliamentary-Debate-NLP}{achyudhk/Parliamentary-Debate-NLP}
+\vspace{0.5mm}
+\begin{innerlist}
+\item Identified the latent structures within the parliamentary debates using techniques like collocation finders, topic modelling, Ward clustering and multidimensional scaling
+\item Implemented the Rapid Automatic Keyword Extraction (RAKE) algorithm for key-phrase extraction
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Miscellaneous Projects}
+\begin{innerlist}
+\item Feed-forward Neural Network library using computational gate approach supporting multiple optimizers, common activation and loss functions
+\item Implementation of state of the art Deep Learning papers on Google SVHN and MNIST datasets 
+\item Implementation of machine learning algorithms like Support Vector Machines, Principal Component Analysis, K-means Clustering, Fuzzy C-means Clustering in Python
+\item Design and implementation of MIPS single-cycle, multi-cycle and pipelined architectures
+\item Network Topology Simulation and Analysis using Wireshark, NS2, NAM, xGraph and AWK
+\item Multi-user chat service using socket programming with multicast and broadcast messages
+\item FTP client and server using socket programming
+\item BibTeX Parser and Code Beautifier for C using LEX and YACC
+\item Weather monitoring station design and simulation using $\mu$--processor programming and interfacing
+\end{innerlist}
+
+\section{Talks and Presentations}
+\textbf{Department of Economics, BITS Pilani}
+\begin{innerlist}
+\item Monte-Carlo methods to assess the feasibility of biofuel production using simulation of economic models (Advisor: \href{http://universe.bits-pilani.ac.in/goa/rajorshis/profile}{Dr. Rajorshi Sen Gupta}) \hfill Nov 2015
+\item Cross country analysis of statistical models for assessing the effect of economic factors on insurance penetration (Advisor: \href{http://universe.bits-pilani.ac.in/goa/aswini/profile}{Dr. Aswini Kumar Mishra}) \hfill May 2016
+\item Rationality, uncertainty and cognition in financial markets – An experimental approach using double auction asset market simulation (Advisor: \href{http://universe.bits-pilani.ac.in/goa/anoopk/profile}{Dr. Anoop Kumar}) \hfill May 2017
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Google Developer Group, Goa}
+\begin{innerlist}
+\item Leveraging the power of Virtualization, Docker and the Cloud \hfill Apr 2017
+\end{innerlist}
+
+\section{Skill Set}
+\textbf{Languages}
+\begin{innerlist}
+    \item[] C, C++, Python, Java, C\#, JavaScript, BASH, SQL, MongoDB, HTML, CSS, Verilog HDL, MIPS32 \& x86 Assembly
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Platforms/Libraries}
+\begin{innerlist}
+    \item[] Amazon Web Services, Google Cloud Platform, Firebase, Android Dev, Docker, \LaTeX, NumPy, SciPy, Scikit-Learn, Matplotlib, NLTK, Gensim, Keras, NetworkX, iGraph, Graph-Tool, Flask, Pandas, Scikit-Image, LEX, YACC, Git VCS
+\end{innerlist}
+
+
+%\section{Submitted Publications}
+%\vspace{-.125in}
+%\begin{bibsection}
+%    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., Lenk, K.M., {\bf Quick, H.S.}, and Harwood, E.M. ``Do neighborhood attributes moderate the relationship between alcohol establishment density and crime?" 2012. Submitted to \emph{Prevention Science}.
+%\end{bibsection}
+%
+%% Add a little space to nudge next ``Conference Publications'' marginpar
+%% down to make room for tall ``Submitted Journal Publications''
+%% marginpar. If there are enough submitted journal publications, this
+%% space will not be needed (and should be removed).
+%%\vspace{0.1in}
+%
+%\section{Papers in Preparation}
+%\vspace{-.1in}
+%\begin{bibsection}
+%%    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., Lenk, K.M., {\bf Quick, H.S.}, and Harwood, E.M. ``Do neighborhood attributes moderate the relationship between alcohol establishment density and crime?"
+%    \item {\bf Quick, H.}, Banerjee, S., and Carlin, B.P. ``Heteroscedastic variances in areally referenced temporal processes with an application to California asthma hospitalization data.''
+%    \item {\bf Quick, H.}, Carlin, B.P., and Banerjee, S. ``Space-time Gaussian process modeling of temporal air pollution gradients."
+%\end{bibsection}
+
+\section{Achievements}
+\textbf{Institute Merit Scholarship} --- BITS Pilani \hfill Aug 2014 -- Dec 2017
+\begin{innerlist}
+\item[] \emph{Awarded six times} for being ranked within the top 1\% of the university's students by GPA
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Research Travel Grant} --- IPCD, BITS Pilani \hfill Aug 2017
+
+\halfblankline
+
+\textbf{India Connect Research Internship} --- NTU, Singapore
+\begin{innerlist}
+\item[] Only student from my university to be selected for both batches in the same year
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Won HackAttack 2017} --- Intuit Inc. \hfill Jun 2017
+\begin{innerlist}
+\item[] Built Foresight, app that uses object detection, realtime database, and Google Places API to help the differently-abled navigate better
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Member of Student Faculty Council} --- Economic Course Review \hfill Aug 2015 -- Dec 2015
+
+\halfblankline
+
+\textbf{Duke of Edinburgh International Award} --- Expedition, Bronze Category \hfill Jul 2013
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% End Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
