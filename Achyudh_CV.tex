@@ -18,6 +18,7 @@
 % (thanks to natbib for inspiration)
 \makeatletter
 \newlength{\bibhang}
+\usepackage[T1]{fontenc}
 \setlength{\bibhang}{1em} %1em}
 \newlength{\bibsep}
  {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
@@ -203,9 +204,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\makeheading{Achyudh Ram}
-
-\section{Contact Information}
+{\huge \scshape Achyudh Ram} 
+\vspace{5pt}
+\hrule
+\vspace{5pt}
+\href{http://www.achyudh.xyz}{www.achyudh.xyz} | 
+\href{https://github.com/achyudhk}{github.com/achyudhk} | \email{achyudhk@gmail.com} | +91-98408-11140
+\newlength{\rcollength}\setlength{\rcollength}{1.4in}
 
 % NOTE: Mind where the & separators and \\ breaks are in the following
 %       table.
@@ -213,24 +218,11 @@
 % ALSO: \rcollength is the width of the right column of the table
 %       (adjust it to your liking; default is 1.85in).
 %
-\newlength{\rcollength}\setlength{\rcollength}{1.4in}%
 %
-\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-Personal website: \href{http://www.achyudh.xyz}{www.achyudh.xyz} & +91-861-042-2481\\
-\href{https://github.com/achyudhk}{github.com/achyudhk}; \href{https://linkedin.com/in/achyudhk}{linkedin.com/in/achyudhk}    & \email{achyudhk@gmail.com} \\
-\end{tabular}
 
-%\section{Objective}
+\section{Research Objective}
 
-%Insert text here if you want to
-%\begin{innerlist}
-%\item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
-%\end{innerlist}
-
-\section{Research Interests}
-
-Software Analytics, Machine Learning\\
-Information Retrieval, Social Network Analysis
+Building intelligent software development automation systems by bringing together diverse fields like software analytics, machine learning, information retrieval and social networks.
 
 \section{Education}
 
@@ -239,10 +231,8 @@ Pilani
 \begin{outerlist}
 \item[] \textbf{B.E. (Hons.), Computer Science}, \emph{Expected:} August 2018
         \begin{innerlist}
-        \item \emph{GPA: 9.65/10.0 and Major GPA: 9.73/10.0}
+        \item \emph{GPA: 9.66/10.0 and Major GPA: 9.73/10.0}
         \item Top 1\% of the university's students by GPA
-        \item Thesis: \emph{Assessing the reviewability and automating the evaluation of GitHub Pull Requests}
-        \item Adviser: \href{https://sback.it/}{Prof. Alberto Bacchelli}, TU Delft
         \end{innerlist}
         
 \item[] \textbf{M.Sc. (Hons.), Economics}, \emph{Expected:} August 2018
@@ -251,9 +241,25 @@ Pilani
         \end{innerlist}
 \end{outerlist}
 
+\section{Senior Thesis}
+\textbf{\scshape Phase 1:} \emph{Assessing the reviewability of code changes and automating the evaluation of GitHub Pull Requests} \hfill \emph{Aug '17 -- Dec '17}
+    \begin{innerlist}
+        \item Adviser: \href{https://sback.it/}{Prof. Alberto Bacchelli}, Delft University of Technology 
+        \item Identification of factors associated with the reviewability of code changes using a comprehensive literature review, statistical modelling, developer surveys and task-guided interviews
+        \item Building an automated pull request evaluation framework based on these factors, and validate its usefulness in an industrial setting.
+    \end{innerlist}
+    
+\halfblankline
+    
+\textbf{\scshape Phase 2:} \emph{Empirical modeling of sentiments in code review discussions on collaborative coding platforms like GitHub} \hfill \emph{Jan '18 -- May '18}
+    \begin{innerlist}
+          
+        \item Adviser: \href{https://cs.uwaterloo.ca/~m2nagapp/}{Prof. Mei Nagappan}, University of Waterloo
+    \end{innerlist}
+    
 \section{Teaching Experience}
 
-\textbf{Teaching Assistant} - Neural Networks \& Fuzzy Logic \hfill \emph{Jan 2017 -- May 2017}
+\textbf{Teaching Assistant} - Neural Networks \& Fuzzy Logic \hfill \emph{Jan '17 -- May '17}
 \begin{innerlist}
 \item[] BITS F312 with \href{http://www.bits-pilani.ac.in/goa/tirtharaj/profile}{Tirtharaj Dash}, Department of Computer Science,\\
         Birla Institute of Technology \& Science, Pilani
@@ -261,94 +267,95 @@ Pilani
 
 \halfblankline
 
-\textbf{Teaching Assistant} - Data Structures \& Algorithms \hfill \emph{Jan 2017 -- May 2017}
+\textbf{Teaching Assistant} - Data Structures \& Algorithms \hfill \emph{Jan '17 -- May '17}
 \begin{innerlist}
 \item[] CS F211 with \href{http://www.bits-pilani.ac.in/goa/abaskar/Profile}{Dr. A. Baskar}, Department of Computer Science,\\
         Birla Institute of Technology \& Science, Pilani
 \end{innerlist}
 
-\section{Work Experience}
-\textbf{Student Researcher, \href{http://swerl.tudelft.nl/bin/view/Main/WebHome}{SERG, TU Delft}} \hfill \emph{Aug 2017 -- Dec 2017}
+\section{Research Experience}
+
+\textbf{Visiting Scholar, \href{https://uwaterloo.ca/}{University of Waterloo}} \hfill \emph{Jan '18 -- May '18}
 \begin{innerlist}
-    \item Writing my senior thesis on assessing the reviewability and automating the evaluation of GitHub Pull Requests
-    \item Working on automating the detection of type mismatches between source code and comments in Python
-    \item Participated in courses on software analytics and software engineering methods
+    \item Working with Dr. Mei Nagappan on the \href{https://cs.uwaterloo.ca/~jhoey/research/themis.cog/index.php}{Theoretical and Empirical Modeling of Identity and Sentiments in Collaborative Groups (THEMIS.COG)} project
 \end{innerlist}
 
 \halfblankline
 
-\textbf{Software Developer Intern, Intuit Inc.} \hfill \emph{May 2017 -- Jul 2017}
+\textbf{Visiting Student, \href{https://www.tudelft.nl/}{Delft University of Technology (TU Delft)}} \hfill \emph{Aug '17 -- Dec '17}
 \begin{innerlist}
-    \item Developed a data engine and a dynamic reports engine directly on top of the database
-    \item Built an insights engine to provide forecasts and a variety of insights based on the data engine
+    \item Worked with the \href{http://swerl.tudelft.nl/bin/view/Main/WebHome}{Software Engineering Research Group (SERG)} on my senior thesis
+    \item Participated in courses on mining software repositories and software engineering methods
 \end{innerlist}
 
 \halfblankline
 
-\textbf{Economic Research \& Planning Intern, Indian Bank HQ} \hfill \emph{May 2015 -- Jul 2015}
+\textbf{Economic Research Intern, Indian Bank HQ} \hfill \emph{May '15 -- Jul '15}
 \begin{innerlist}
     \item Developed environment sensitive time-series forecasting models for setting business targets
 \end{innerlist}
 
+\section{Work Experience}
+
+\textbf{Software Developer Intern, Intuit Inc.} \hfill \emph{May '17 -- Jul '17}
+\begin{innerlist}
+    \item Developed a data engine for layout-based retrieval from the database
+    \item Built a reports engine that uses this data engine to provide performance insights for businesses
+    \item Approx. 400\% faster compared to existing solutions due to parallel query evaluation 
+  
+
+\end{innerlist}
+
 \section{Research Projects}
 
-\textbf{Analysis framework for decoding online developer communities} \hfill \emph{Dec 2015 -- 
-May 2017}
-Adviser: \href{https://prasadtalasila.wordpress.com/}{Prasad Talasila} \hfill GitHub: \href{https://github.com/achyudhk/Mailing-List-Network-Analyzer}{github.com/achyudhk/Mailing-List-Network-Analyzer}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Analyzed author interaction through community detection in mailing lists and IRC channels
-\item Developed a text mining approach to identify topic experts and label communities 
-\item Utilized visual aids to examine the activity and decode the structure of the developer communities
-\end{innerlist}
+\textbf{Detecting inconsistencies between Python code and comments} \hfill \emph{Sep '17 -- 
+Nov '17}
+Advisers: \href{https://sback.it/}{Dr. A. Bacchelli}, \href{https://www.lucapascarella.com}{L. Pascarella} \hfill GitHub: \href{https://github.com/achyudhk/PyFunc-Signature-Parser}{achyudhk/PyFunc-Signature-Parser}
+\vspace{0.5mm} \\
+An analysis of type inconsistencies between source code and method docstrings in Python across popular Python libraries and building an automated tool to identify these inconsistencies.
 
 \halfblankline
 
-\textbf{Fitness-aware brokering of hosted containerized environments} \hfill \emph{Jan 2017 -- May 2017}
+\textbf{Analysis framework for decoding online developer communities} \hfill \emph{Dec '15 -- 
+May '17}
+Adviser: \href{https://prasadtalasila.wordpress.com/}{Prasad Talasila} \hfill GitHub: \href{https://github.com/achyudhk/Mailing-List-Network-Analyzer}{achyudhk/Mailing-List-Network-Analyzer}
+\vspace{0.5mm} \\
+An analysis of author interaction through community detection in mailing lists and IRC channels
+using a text mining based approach to identify topic experts and label communities, in order to examine the activity and decode the structure of the developer communities.
+
+\halfblankline
+
+\textbf{Fitness-aware brokering of hosted containerized environments} \hfill \emph{Jan '17 -- May '17}
 Adviser: \href{https://scholar.google.co.in/citations?user=8UNP6BIAAAAJ}{Dr. Santonu Sarkar} \hfill GitHub: \href{https://github.com/achyudhk/Fitness-Aware-Container-Brokering}{achyudhk/Fitness-Aware-Container-Brokering}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Developed an integration agent that benchmarks and containerizes a SaaS catalog offering and a smart fulfillment engine that deploys it into the best-fit container out of a set of containers hosted on various underlying clouds
-\end{innerlist}
+\vspace{0.5mm} \\
+An integration agent that benchmarks and containerizes a SaaS catalog offering and a smart fulfillment engine that deploys it into the best-fit container out of a set of containers hosted on various underlying clouds. \textit{In association with IBM Research Labs.}
 
 \halfblankline
 
-\textbf{Novel feature selection using Fuzzy C-Means clustering} \hfill \emph{Feb 2017 -- Apr 2017}\\
+\textbf{Novel feature selection using Fuzzy C-Means clustering} \hfill \emph{Feb '17 -- Apr '17}\\
 Adviser: \href{http://www.bits-pilani.ac.in/goa/rkroul/Profile}{Dr. Rajendra Roul} \hfill GitHub: \href{https://github.com/achyudhk/FCM-Feature-Selection}{achyudhk/FCM-Feature-Selection}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Features were selected using cosine similarity scores on the semantic centroids calculated from the normalized term-term correlation based on clustering
-\item Selected features result in comparable F-scores for classification compared to MI and Chi\textsuperscript{2}
-\end{innerlist}
+\vspace{0.5mm} \\
+Feature selection using cosine similarity scores on the semantic centroids calculated from the normalized term-term correlation factors based on Fuzzy C-Means clustering. Selected features resulted in comparable F-scores for classification compared to MI and $\chi^2$
 
 \halfblankline
 
-\textbf{Semantic segmentation using a deconvolution network} \hfill \emph{Mar 2017 -- Apr 2017}\\
+\textbf{Semantic segmentation using a deconvolution network} \hfill \emph{Mar '17 -- Apr '17}\\
 Neural Networks Course Project \hfill Reference: \href{https://arxiv.org/abs/1505.04366}{arXiv:1505.04366}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Trained a deconvolution network to identify Red Blood Cells in an input image by predicting a binary segmentation mask
-\end{innerlist}
+\vspace{0.5mm} \\
+A deconvolution network that can identify Red Blood Cells in an input image by predicting a binary segmentation mask.
 
 \halfblankline
 
-\textbf{Video translation of American Sign Language gestures} \hfill \emph{Nov 2016 -- Dec 2016}\\
+\textbf{Video translation of American Sign Language gestures} \hfill \emph{Nov '16 -- Dec '16} \\
 Machine Learning Course Project \hfill GitHub: \href{https://github.com/achyudhk/Sign-Language-Recognition}{achyudhk/Sign-Language-Recognition}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Utilized hard negative mining, non-maximal suppression for localization and extracted histogram of gradients and local binary patterns as features
-\item Achieved an accuracy of $\sim$99\% on localization and 96.8\% on top-5 classification (IoU metric)
-\end{innerlist}
+\vspace{0.5mm} \\
+An ensemble classifier that applies hard negative mining and non-maximal suppression for localization, using histogram of gradients and local binary patterns as features. Achieved an accuracy of $\sim$99\% on localization and 96.8\% on top-5 classification (IoU metric).
 
 \halfblankline
 
-\textbf{Identifying the trends in Indian Legislative issues using NLP} \hfill \emph{Aug 2016 -- Dec 2016}
-Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/Profile}{Dr. Anoop Kumar} \hfill GitHub: \href{https://github.com/achyudhk/Parliamentary-Debate-NLP}{achyudhk/Parliamentary-Debate-NLP}
-\vspace{0.5mm}
-\begin{innerlist}
-\item Identified the latent structures within the parliamentary debates using techniques like collocation finders, topic modelling, Ward clustering and multidimensional scaling
-\item Implemented the Rapid Automatic Keyword Extraction (RAKE) algorithm for key-phrase extraction
-\end{innerlist}
+\textbf{Identifying the trends in Indian Legislative issues using NLP} \hfill \emph{Aug '16 -- Dec '16}
+Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/Profile}{Dr. Anoop Kumar} \hfill GitHub: \href{https://github.com/achyudhk/Parliamentary-Debate-NLP}{achyudhk/Parliamentary-Debate-NLP} \\
+Identification of latent structures within parliamentary debates using natural language processing to discover seasonal trends in the debates of the upper and lower houses.
 
 \halfblankline
 
@@ -366,31 +373,47 @@ Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/Profile}{Dr. Anoop K
 \end{innerlist}
 
 \section{Talks and Presentations}
-\textbf{Department of Economics, BITS Pilani}
+
+\textbf{Google Developer Group, Goa}
 \begin{innerlist}
-\item Monte-Carlo methods to assess the feasibility of biofuel production using simulation of economic models (Adviser: \href{http://universe.bits-pilani.ac.in/goa/rajorshis/profile}{Dr. Rajorshi Sen Gupta}) \hfill Nov 2015
-\item Cross country analysis of statistical models for assessing the effect of economic factors on insurance penetration (Adviser: \href{http://universe.bits-pilani.ac.in/goa/aswini/profile}{Dr. Aswini Kumar Mishra}) \hfill May 2016
-\item Rationality, uncertainty and cognition in financial markets – An experimental approach using double auction asset market simulation (Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/profile}{Dr. Anoop Kumar}) \hfill May 2017
+\item Leveraging the power of Virtualization, Docker and the Cloud \hfill \emph{Apr '17}
 \end{innerlist}
 
 \halfblankline
 
-\textbf{Google Developer Group, Goa}
+\textbf{Department of Economics, {\scshape BITS} Pilani}
 \begin{innerlist}
-\item Leveraging the power of Virtualization, Docker and the Cloud \hfill Apr 2017
+\item Monte-Carlo methods to assess the feasibility of biofuel production using simulation of economic models (Adviser: \href{http://universe.bits-pilani.ac.in/goa/rajorshis/profile}{Dr. Rajorshi Sen Gupta}) \hfill \emph{Nov '15}
+\item Cross country analysis of statistical models for assessing the effect of economic factors on insurance penetration (Adviser: \href{http://universe.bits-pilani.ac.in/goa/aswini/profile}{Dr. Aswini Kumar Mishra}) \hfill \emph{May '16}
+\item Rationality, uncertainty and cognition in financial markets -- An experimental approach using double auction asset market simulation (Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/profile}{Dr. Anoop Kumar}) \hfill \emph{May '17}
 \end{innerlist}
+
+\section{Selected Coursework}
+\textbf{Computer Science}
+\begin{innerlist}
+    \item[]  Machine Learning, Neural Networks \& Fuzzy Logic, Information Retrieval, Mining Software Repositories, Software Engineering Methods, Parallel Computing, Compiler Design, Computer Networks, Design \& Analysis of Algorithms, Data Structures \& Algorithms, Discrete Structures in Computer Science, Operating Systems, Computer Architecture, Principles of Programming Languages, Theory of Computation, Database Systems, Object Oriented Programming, Logic in Computer Science, Microprocessor Programming \& Interfacing, Computer Programming, Digital Design
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Mathematics}
+\begin{innerlist}
+    \item[] Multivariable Calculus, Linear Algebra, Differential Equations, Probability \& Statistics, Advanced Econometrics, Mathematical \& Statistical Methods
+\end{innerlist}
+
+\pagebreak
 
 \section{Skill Set}
 \textbf{Languages}
 \begin{innerlist}
-    \item[] C, C++, Python, Java, C\#, JavaScript, BASH, SQL, MongoDB, HTML, CSS, Verilog HDL, MIPS32 \& x86 Assembly
+    \item[] C, C++, Python, Java, C\#, JavaScript, R, BASH, SQL, MongoDB, Verilog HDL, HTML, CSS, MIPS32 \& x86 Assembly
 \end{innerlist}
 
 \halfblankline
 
 \textbf{Platforms/Libraries}
 \begin{innerlist}
-    \item[] Amazon Web Services, Google Cloud Platform, Firebase, Android Dev, Docker, \LaTeX, NumPy, SciPy, Scikit-Learn, Matplotlib, NLTK, Gensim, Keras, NetworkX, iGraph, Graph-Tool, Flask, Pandas, Scikit-Image, LEX, YACC, Git VCS
+    \item[] Amazon Web Services, Google Cloud Platform, Firebase, Android Dev, Docker, \LaTeX, NumPy, SciPy, Scikit-Learn, Matplotlib, NLTK, Gensim, Keras, NetworkX, iGraph, Graph-Tool, Flask, Pandas, Scikit-Image, LEX, YACC
 \end{innerlist}
 
 
@@ -414,37 +437,40 @@ Adviser: \href{http://universe.bits-pilani.ac.in/goa/anoopk/Profile}{Dr. Anoop K
 %    \item {\bf Quick, H.}, Carlin, B.P., and Banerjee, S. ``Space-time Gaussian process modeling of temporal air pollution gradients."
 %\end{bibsection}
 
-\section{Achievements}
-\textbf{Institute Merit Scholarship} --- BITS Pilani \hfill Aug 2014 -- Dec 2017
+\section{Awards and Scholarships}
+\textbf{IUCAE Grant} --- Inter-University Centre for Alternative Economics
+\hfill \emph{Apr '17}
+\begin{innerlist}
+\item[] Awarded towards experimental work on \emph{Rationality, Uncertainty and Cognition in Financial Markets} with Dr. Anoop Kumar
+\end{innerlist}
+
+\halfblankline
+
+\textbf{Institute Merit Scholarship} --- BITS Pilani \hfill \emph{Aug '14 -- Dec '17}
 \begin{innerlist}
 \item[] \emph{Awarded six times} for being ranked within the top 1\% of the university's students by GPA
 \end{innerlist}
 
 \halfblankline
 
-\textbf{Research Travel Grant} --- IPCD, BITS Pilani \hfill Aug 2017
-
+\textbf{Research Travel Grant} --- IPCD, BITS Pilani \hfill \emph{Aug '17}
+\begin{innerlist}
+\item[] Awarded in recognition of my senior thesis at TU Delft
+\end{innerlist}
 \halfblankline
 
-\textbf{India Connect Research Internship} --- NTU, Singapore
+\textbf{Won HackAttack 2017} --- Intuit Inc. \hfill \emph{Jun '17}
 \begin{innerlist}
-\item[] Only student from my university to be selected for both batches in the same year
+\item[] Built \textit{Foresight}, an Android app that uses object detection, realtime databases, and Google Places API to help the differently-abled navigate better
 \end{innerlist}
 
 \halfblankline
 
-\textbf{Won HackAttack 2017} --- Intuit Inc. \hfill Jun 2017
-\begin{innerlist}
-\item[] Built Foresight, app that uses object detection, realtime database, and Google Places API to help the differently-abled navigate better
-\end{innerlist}
+\textbf{Student Faculty Council Membership} --- Economic Course Review \hfill \emph{Aug '15 -- Dec '15}
 
 \halfblankline
 
-\textbf{Member of Student Faculty Council} --- Economic Course Review \hfill Aug 2015 -- Dec 2015
-
-\halfblankline
-
-\textbf{Duke of Edinburgh International Award} --- Expedition, Bronze Category \hfill Jul 2013
+\textbf{Duke of Edinburgh International Award} --- Bronze Category \hfill \emph{Jul '13}
 
 \end{document}
 
