@@ -1,2 +1,2 @@
-# Academic-Resume
-This repository holds my LaTeX typeset academic resume. Be awed or be gone. 
+# Academic-CV
+This repository holds my LaTeX typeset academic CV. Be awed or be gone. 
